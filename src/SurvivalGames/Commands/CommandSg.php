@@ -18,5 +18,7 @@ class CommandSg extends Command{
 		$player = $sender;
 	}
 	$sender->sendMessage(SurvivalGames::PREFIX." §7by §6McpeBooster§7!");
+	$msg = SurvivalGames::getInstance()->getLanguage()->get("test");
+	$sender->sendMessage($msg);
   }
 }   

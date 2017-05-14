@@ -3,8 +3,7 @@
 
 #If you need help, look at the ReadMe.md
 
-#Language of the Plugin: english/german
-language: english
+language: eng
 
 #Array with all GameId
 GameId: []

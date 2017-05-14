@@ -4,10 +4,12 @@ namespace SurvivalGames;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\event\Listener;
+use pocketmine\lang\BaseLang;
 
 #Own
 
 use SurvivalGames\Game\ArenaManager;
+use SurvivalGames\Events\SignCreate;
 use SurvivalGames\Commands\CommandSg;
 
 class SurvivalGames extends PluginBase implements Listener{
@@ -15,8 +17,9 @@ class SurvivalGames extends PluginBase implements Listener{
 	const PREFIX = "§7[§2SurvivalGames§7]";
 	const TITLEPREFIX = "§2SurvivalGames";
 	
+	private $baseLang = null;
+	
 	public static $instance;
-    public static $pfad;
 	
 	public function onEnable(){
 		$this->getLogger()->info(self::PREFIX . " §7by §6McpeBooster§7!");
@@ -27,7 +30,13 @@ class SurvivalGames extends PluginBase implements Listener{
 		#Commands
 		$this->getServer()->getCommandMap()->register("Sg", new CommandSg());
 		
+		#Events
+		$this->getServer()->getPluginManager()->registerEvents(new SignCreate(), $this);
+		
 		new ArenaManager();
+		
+		$lang = $this->getConfig()->get("language", BaseLang::FALLBACK_LANGUAGE);
+        $this->baseLang = new BaseLang($lang, $this->getFile() . "resources/");
 	}
 	
 	private function loadConfig(){
@@ -37,6 +46,15 @@ class SurvivalGames extends PluginBase implements Listener{
 	
 	public static function getInstance(){
         return self::$instance;
+    }
+	
+	 /**
+     * @api
+     * @return BaseLang
+     */
+	 
+    public function getLanguage() : BaseLang {
+        return $this->baseLang;
     }
 	
 	/**
