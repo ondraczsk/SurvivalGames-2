@@ -36,7 +36,7 @@ class ArenaManager{
 	public static function getLobbyId($lobby){
 	$gameid = SurvivalGames::getInstance()->getConfig()->get("GameId");
 	foreach($gameid as $gi){
-		if($config->getNested($gi.".Lobby") == $lobby){
+		if(SurvivalGames::getInstance()->getConfig()->getNested($gi.".Lobby") == $lobby){
 			return $gi;
 		}
 	}
@@ -50,7 +50,7 @@ class ArenaManager{
 	public static function getArenaId($arena){
 		$gameid = SurvivalGames::getInstance()->getConfig()->get("GameId");
 	foreach($gameid as $gi){
-		if($config->getNested($gi.".Arena") == $arena){
+		if(SurvivalGames::getInstance()->getConfig()->getNested($gi.".Arena") == $arena){
 			return $gi;
 		}
 	}
@@ -64,7 +64,7 @@ class ArenaManager{
 	public static function getMatchId($match){
 		$gameid = SurvivalGames::getInstance()->getConfig()->get("GameId");
 	foreach($gameid as $gi){
-		if($config->getNested($gi.".Match") == $match){
+		if(SurvivalGames::getInstance()->getConfig()->getNested($gi.".Match") == $match){
 			return $gi;
 		}
 	}
