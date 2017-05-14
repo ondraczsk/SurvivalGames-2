@@ -3,6 +3,10 @@
 
 #If you need help, look at the ReadMe.md
 
+#Language of the Plugin: english/german
+language: english
 
 #Array with all GameId
 GameId: []
+
+#Here comes the Arena configuration
