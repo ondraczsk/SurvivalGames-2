@@ -7,6 +7,7 @@ use pocketmine\event\Listener;
 
 #Own
 
+use SurvivalGames\Game\ArenaManager;
 use SurvivalGames\Commands\CommandSg;
 
 class SurvivalGames extends PluginBase implements Listener{
@@ -25,6 +26,8 @@ class SurvivalGames extends PluginBase implements Listener{
 		
 		#Commands
 		$this->getServer()->getCommandMap()->register("Sg", new CommandSg());
+		
+		new ArenaManager();
 	}
 	
 	private function loadConfig(){
