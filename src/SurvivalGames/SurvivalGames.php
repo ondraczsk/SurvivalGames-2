@@ -25,4 +25,8 @@ class SurvivalGames extends PluginBase implements Listener{
 		@mkdir($this->getDataFolder()."maps");
 	}
 	
+	public static function getInstance(){
+        return self::$instance;
+    }
+	
 }
