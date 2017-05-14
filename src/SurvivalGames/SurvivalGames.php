@@ -5,6 +5,10 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\event\Listener;
 
+#Own
+
+use SurvivalGames\Commands\CommandSg;
+
 class SurvivalGames extends PluginBase implements Listener{
 	
 	const PREFIX = "§7[§2SurvivalGames§7]";
@@ -18,6 +22,9 @@ class SurvivalGames extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this,$this);
 		self::$instance = $this;
 		$this->loadConfig();
+		
+		#Commands
+		$this->getServer()->getCommandMap()->register("Sg", new CommandSg());
 	}
 	
 	private function loadConfig(){
